@@ -1,0 +1,46 @@
+{
+  "type": "object",
+  "required": ["data", "meta"],
+  "properties": {
+    "data": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "collection_id", "project_id", "created_by", "created_at", "updated_at", "data"],
+        "properties": {
+          "id": {"type": "string"},
+          "collection_id": {"type": "string"},
+          "project_id": {"type": "integer"},
+          "app_user_id": {},
+          "created_by": {"type": "integer"},
+          "created_at": {"type": "string"},
+          "updated_at": {"type": "string"},
+          "deleted_at": {},
+          "data": {
+            "type": "object",
+            "required": ["name", "price", "category", "in_stock"],
+            "properties": {
+              "name": {"type": "string"},
+              "price": {"type": "number"},
+              "category": {"type": "string"},
+              "in_stock": {"type": "boolean"}
+            },
+            "additionalProperties": false
+          }
+        }
+      }
+    },
+    "meta": {
+      "type": "object",
+      "required": ["page", "limit", "total", "pages"],
+      "properties": {
+        "page": {"type": "integer"},
+        "limit": {"type": "integer"},
+        "total": {"type": "integer"},
+        "pages": {"type": "integer"}
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}
