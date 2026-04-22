@@ -51,6 +51,21 @@ jobs:
           name: allure-results
           path: allure-results
 
+      - name: Get previous Allure history
+        uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+          path: gh-pages-branch
+        continue-on-error: true
+
+      - name: Copy previous history
+        run: |
+          if [ -d "gh-pages-branch/history" ]; then
+            mkdir -p allure-results/history
+            cp -r gh-pages-branch/history/* allure-results/history/
+          fi
+        continue-on-error: true
+
       - name: Install Allure CLI
         run: |
           wget -q https://github.com/allure-framework/allure2/releases/download/2.27.0/allure-2.27.0.tgz
